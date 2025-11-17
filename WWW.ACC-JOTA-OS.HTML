@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACC.JOTA-OS - Tu Estilo, Tu Identidad</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Header con efecto neón */
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #00ff88;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #00ff88, #00d4ff, #ff00ea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.5); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            background: linear-gradient(45deg, #00ff88, #00d4ff);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 255, 136, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 100px 30px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(255, 0, 234, 0.1), rgba(0, 212, 255, 0.1));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.2), transparent);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #00ff88, #00d4ff, #ff00ea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 40px;
+            color: #b0b0b0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 45px;
+            background: linear-gradient(45deg, #ff00ea, #00d4ff);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s;
+            box-shadow: 0 0 30px rgba(255, 0, 234, 0.5);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 40px rgba(255, 0, 234, 0.8);
+        }
+
+        /* Sección de Productos */
+        .products-section {
+            max-width: 1400px;
+            margin: 80px auto;
+            padding: 0 30px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 60px;
+            background: linear-gradient(45deg, #00ff88, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            border: 2px solid transparent;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s;
+        }
+
+        .product-card:hover::before {
+            left: 100%;
+        }
+
+        .product-card:hover {
+            border-color: #00ff88;
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.3);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .product-card:hover .product-image::after {
+            left: 100%;
+        }
+
+        .product-name {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #00ff88;
+        }
+
+        .product-price {
+            font-size: 28px;
+            color: #00d4ff;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .whatsapp-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: bold;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 60px 30px 30px;
+            margin-top: 100px;
+            border-top: 2px solid #00ff88;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .footer-section h3 {
+            color: #00ff88;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .footer-section p {
+            color: #b0b0b0;
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #00ff88, #00d4ff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            text-decoration: none;
+            font-size: 24px;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2) rotate(360deg);
+            box-shadow: 0 5px 20px rgba(0, 255, 136, 0.5);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #666;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 36px; }
+            .hero p { font-size: 18px; }
+            .section-title { font-size: 32px; }
+            .nav-links { flex-direction: column; gap: 10px; }
+            nav { flex-direction: column; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">ACC.JOTA-OS</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#ropa">Ropa</a></li>
+                <li><a href="#accesorios">Accesorios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <h1>🔥 TU ESTILO, TU IDENTIDAD 🔥</h1>
+        <p>Las mejores poleras, gorras y accesorios para jóvenes con actitud</p>
+        <a href="#ropa" class="cta-button">Ver Catálogo</a>
+    </section>
+
+    <!-- Productos Ropa -->
+    <section class="products-section" id="ropa">
+        <h2 class="section-title">⚡ ROPA JUVENIL ⚡</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">👕</div>
+                <h3 class="product-name">Polera Clásica</h3>
+                <p class="product-price">80 Bs.</p>
+                <p style="color: #b0b0b0; margin-bottom: 15px;">Diseño exclusivo, 100% algodón, tallas S-XL</p>
+                <a href="https://wa.me/59167476561?text=Hola,%20me%20interesa%20la%20Polera%20Clásica.%20¿Sigue%20disponible?" class="whatsapp-btn">💬 Pedir por WhatsApp</a>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image" style="background: linear-gradient(135deg, #f093fb, #f5576c);">👕</div>
+                <h3 class="product-name">Polera Oversize Neón</h3>
+                <p class="product-price">95 Bs.</p>
+                <p style="color: #b0b0b0; margin-bottom: 15px;">Estilo urbano, colores vibrantes, fit oversized</p>
+                <a href="https://wa.me/59167476561?text=Hola,%20me%20interesa%20la%20Polera%20Oversize%20Neón.%20¿Sigue%20disponible?" class="whatsapp-btn">💬 Pedir por WhatsApp</a>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">👕</div>
+                <h3 class="product-name">Polera Cyber Edition</h3>
+                <p class="product-price">85 Bs.</p>
+                <p style="color: #b0b0b0; margin-bottom: 15px;">Estampado digital, material premium</p>
+                <a href="https://wa.me/59167476561?text=Hola,%20me%20interesa%20la%20Polera%20Cyber%20Edition.%20¿Sigue%20disponible?" class="whatsapp-btn">💬 Pedir por WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos Accesorios -->
+    <section class="products-section" id="accesorios">
+        <h2 class="section-title">🎒 ACCESORIOS 🎒</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image" style="background: linear-gradient(135deg, #fa709a, #fee140);">🧢</div>
+                <h3 class="product-name">Gorra Snapback Pro</h3>
+                <p class="product-price">60 Bs.</p>
+                <p style="color: #b0b0b0; margin-bottom: 15px;">Logo bordado, ajustable, varios colores</p>
+                <a href="https://wa.me/59167476561?text=Hola,%20me%20interesa%20la%20Gorra%20Snapback%20Pro.%20¿Sigue%20disponible?" class="whatsapp-btn">💬 Pedir por WhatsApp</a>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image" style="background: linear-gradient(135deg, #30cfd0, #330867);">🎒</div>
+                <h3 class="product-name">Mochila RGB</h3>
+                <p class="product-price">150 Bs.</p>
+                <p style="color: #b0b0b0; margin-bottom: 15px;">Compartimento para laptop, resistente al agua</p>
+                <a href="https://wa.me/59167476561?text=Hola,%20me%20interesa%20la%20Mochila%20RGB.%20¿Sigue%20disponible?" class="whatsapp-btn">💬 Pedir por WhatsApp</a>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">🕶️</div>
+                <h3 class="product-name">Lentes Style</h3>
+                <p class="product-price">45 Bs.</p>
+                <p style="color: #b0b0b0; margin-bottom: 15px;">Protección UV, diseño moderno</p>
+                <a href="https://wa.me/59167476561?text=Hola,%20me%20interesa%20los%20Lentes%20Style.%20¿Sigue%20disponible?" class="whatsapp-btn">💬 Pedir por WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>📍 Ubicación</h3>
+                <p>Sipe Sipe, Cochabamba<br>Bolivia</p>
+            </div>
+            <div class="footer-section">
+                <h3>📞 Contacto</h3>
+                <p>WhatsApp: +591 6747 6561<br>Lun - Sáb: 9:00 - 20:00</p>
+            </div>
+            <div class="footer-section">
+                <h3>🌐 Síguenos</h3>
+                <div class="social-links">
+                    <a href="#">📘</a>
+                    <a href="#">📷</a>
+                    <a href="#">💬</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 ACC.JOTA-OS | Todos los derechos reservados | Diseño No-Code con Actitud Juvenil 🔥</p>
+        </div>
+    </footer>
+</body>
+</html>
